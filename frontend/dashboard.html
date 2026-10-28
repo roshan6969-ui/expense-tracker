@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="dashboard.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <h2>ExpenseTracker</h2>
+
+    <ul>
+      <li onclick="showDashboard()">Dashboard</li>
+      <li onclick="showIncome()">Income</li>
+      <li onclick="showExpenses()">Expenses</li>
+      <li onclick="showProfile()">Profile</li>
+    </ul>
+
+    <button onclick="logout()">Logout</button>
+  </div>
+
+  <!-- MAIN -->
+  <div class="main">
+
+    <div class="topbar">
+      <h2>Dashboard</h2>
+      <div>
+        <span id="userName"></span>
+        <button onclick="toggleDarkMode()">🌙</button>
+      </div>
+    </div>
+
+    <!-- CARDS -->
+    <div class="cards">
+      <div class="card"><h4>Total Balance</h4><p id="balance">₹0</p></div>
+      <div class="card"><h4>Income</h4><p id="income">₹0</p></div>
+      <div class="card"><h4>Expenses</h4><p id="expense">₹0</p></div>
+      <div class="card"><h4>Savings</h4><p id="savings">₹0</p></div>
+    </div>
+
+    <!-- ADD -->
+    <div class="add-box">
+      <input type="text" id="text" placeholder="Description">
+      <input type="number" id="amount" placeholder="Amount">
+      <select id="type">
+        <option value="income">Income</option>
+        <option value="expense">Expense</option>
+      </select>
+      <button onclick="addTransaction()">Add</button>
+    </div>
+
+    <!-- LIST -->
+    <div class="transactions">
+      <h3>Recent Transactions</h3>
+
+      <select onchange="filterTransactions(this.value)">
+        <option value="all">All</option>
+        <option value="income">Income</option>
+        <option value="expense">Expense</option>
+      </select>
+
+      <ul id="list"></ul>
+
+      <canvas id="chart" height="80"></canvas>
+      <canvas id="monthlyChart" height="100"></canvas>
+    </div>
+
+  </div>
+
+</div>
+
+<script src="dashboard.js"></script>
+</body>
+</html>
